@@ -2,16 +2,16 @@
 import time
 from adb import Adb
 
-
 adb = Adb()
 
-def taobao_18dianpu(num=18):
+
+def taobao_18dianpu(num=18, th=0):
     '''
     淘宝浏览18个店铺15秒
     '''
     for i in range(num):
-        print("第{}次".format(i))
-        adb.adb_click(873, 1930)
+        print("第{}次".format(i + 1))
+        adb.adb_click(873, 1930 - 180 * th)
         time.sleep(3)
         for _ in range(3):
             adb.adb_swipe_down()
@@ -21,7 +21,8 @@ def taobao_18dianpu(num=18):
         time.sleep(1)
 
 
-# taobao_18dianpu()
+# for _ in range(4):
+#     taobao_18dianpu(1,3)
 
 
 def unicom_qiandao():
@@ -52,7 +53,8 @@ def unicom_qiandao():
     time.sleep(2)
     adb.adb_put_back()
 
-# unicom_qiandao()
+
+unicom_qiandao()
 
 
 def yundong_2_liuliang():
@@ -90,8 +92,10 @@ def yundong_2_liuliang():
     time.sleep(6)
     adb.adb_swipe_up()
     time.sleep(2)
-    adb.adb_click(540,733)
+    adb.adb_click(540, 733)
     time.sleep(3)
+    adb.adb_refresh()
+    time.sleep(1)
     adb.click_by_some_text_after_refresh("立即兑换")
     time.sleep(4)
     adb.adb_keyboard(187)
@@ -108,4 +112,23 @@ def yundong_2_liuliang():
 # yundong_2_liuliang()
 
 
+def jd_qiandao():
+    adb.click_by_content_after_refresh('京东')
+    time.sleep(5)
+    adb.adb_swipe(adb.s_w * 7 / 8, 930, adb.s_w * 1 / 8, 930, 200)
+    time.sleep(0.8)
+    adb.adb_click(740, 1024)  # 领流量
+    time.sleep(2)
+    adb.adb_click(adb.s_w / 2, 450)  # 签到
+    time.sleep(1)
+    adb.adb_put_back()
+    time.sleep(0.5)
+    adb.adb_put_back()
+    time.sleep(0.5)
+    adb.adb_put_back()
+    time.sleep(0.5)
+
+# jd_qiandao()
+
 # adb.adb_keyboard(3)
+# adb.adb_refresh()

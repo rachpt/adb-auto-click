@@ -92,7 +92,7 @@ class Adb:
     def adb_refresh(self):
         while True:
             sub = subprocess.Popen(self._baseShell +
-                                   'shell uiautomator dump /sdcard/dump.xml',
+                                   'shell uiautomator dump /sdcard/dump.uix',
                                    shell=True,
                                    stderr=subprocess.PIPE,
                                    stdout=subprocess.PIPE)
@@ -100,11 +100,11 @@ class Adb:
             if not sub.stderr.read():
                 break
 
-        os.system(self._baseShell + 'pull /sdcard/dump.xml ' + self._basePath +
-                  '/dump.xml')
+        os.system(self._baseShell + 'pull /sdcard/dump.uix ' + self._basePath +
+                  '/dump.uix')
 
     def parse_xml(self):
-        self._xml = xmlParser.ElementTree(file=self._basePath + '/dump.xml')
+        self._xml = xmlParser.ElementTree(file=self._basePath + '/dump.uix')
 
     def refresh_nodes(self):
         self.adb_refresh()
@@ -177,7 +177,7 @@ class Adb:
 
     def click_by_some_text_after_refresh(self, text, index=None):
         self.refresh_nodes()
-        with open(self._basePath + '/dump.xml', 'r') as f:
+        with open(self._basePath + '/dump.uix', 'r') as f:
             _text = re.search('"[^"]*' + text + '[^"]*"', f.read())
         if _text:
             _text = _text.group(0).strip('"')
@@ -195,7 +195,7 @@ class Adb:
 
     def click_by_some_content_after_refresh(self, content, index=None):
         self.refresh_nodes()
-        with open(self._basePath + '/dump.xml', 'r') as f:
+        with open(self._basePath + '/dump.uix', 'r') as f:
             _content = re.search('"[^"]*' + content + '[^"]*"', f.read())
         if _content:
             # print(_content.group(0).strip('"'))
