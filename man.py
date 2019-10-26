@@ -105,7 +105,7 @@ def yundong_2_liuliang():
     time.sleep(0.5)
 
 
-yundong_2_liuliang()
+# yundong_2_liuliang()
 
 
 # adb.adb_keyboard(3)
