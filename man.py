@@ -1,0 +1,111 @@
+#!/usr/bin/env python
+import time
+from adb import Adb
+
+
+adb = Adb()
+
+def taobao_18dianpu(num=18):
+    '''
+    淘宝浏览18个店铺15秒
+    '''
+    for i in range(num):
+        print("第{}次".format(i))
+        adb.adb_click(873, 1930)
+        time.sleep(3)
+        for _ in range(3):
+            adb.adb_swipe_down()
+            time.sleep(1)
+        time.sleep(15)
+        adb.adb_put_back()
+        time.sleep(1)
+
+
+# taobao_18dianpu()
+
+
+def unicom_qiandao():
+    '''
+    联通签到，包括3次转盘游戏
+    '''
+    adb.adb_back_to_desktop()
+    time.sleep(1)
+    adb.adb_back_to_desktop()
+    time.sleep(2)
+    adb.adb_swipe_right()
+    time.sleep(1)
+    adb.click_by_content_after_refresh('手机营业厅')
+    time.sleep(5)
+    adb.click_by_text_after_refresh('签到')
+    time.sleep(5)
+    adb.adb_put_back()
+    time.sleep(1)
+    adb.adb_put_back()
+
+    adb.click_by_some_text_after_refresh('万人获奖')
+    time.sleep(5)
+    for _ in range(3):
+        adb.click_by_rid_after_refresh('zhuanpan_1')
+        time.sleep(5)
+
+    adb.adb_put_back()
+    time.sleep(2)
+    adb.adb_put_back()
+
+# unicom_qiandao()
+
+
+def yundong_2_liuliang():
+    '''
+    我特权换流量
+    '''
+    adb.adb_back_to_desktop()
+    time.sleep(1)
+    adb.adb_back_to_desktop()
+    time.sleep(2)
+    adb.adb_swipe_right(100)
+    time.sleep(2)
+    adb.adb_swipe_right(100)
+    time.sleep(1)
+    adb.click_by_content_after_refresh('运动助手')
+    time.sleep(3)
+    adb.click_by_text_after_refresh('切换微信运动')
+    time.sleep(1)
+    adb.adb_input('rachpt')
+    time.sleep(1)
+    adb.click_by_text_after_refresh('输入要刷的步数')
+    time.sleep(1)
+    adb.adb_input(56743)
+    time.sleep(1)
+    adb.click_by_text('提交')
+    time.sleep(3)
+    adb.adb_put_back()
+    time.sleep(0.5)
+    adb.adb_put_back()
+    time.sleep(0.5)
+    adb.adb_put_back()
+    time.sleep(2)
+
+    adb.click_by_content_after_refresh('沃特权')
+    time.sleep(6)
+    adb.adb_swipe_up()
+    time.sleep(2)
+    adb.adb_click(540,733)
+    time.sleep(3)
+    adb.click_by_some_text_after_refresh("立即兑换")
+    time.sleep(4)
+    adb.adb_keyboard(187)
+    time.sleep(0.8)
+    adb.adb_swipe_left(100)
+    time.sleep(0.8)
+
+    adb.adb_put_back()
+    time.sleep(0.5)
+    adb.adb_put_back()
+    time.sleep(0.5)
+
+
+yundong_2_liuliang()
+
+
+# adb.adb_keyboard(3)
