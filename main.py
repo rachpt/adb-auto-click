@@ -143,14 +143,14 @@ def unicom_shiyongbanzhu(num=10):
         print("第{}次".format(i))
         adb.click_by_text_after_refresh('去使用')
         time.sleep(1)
-        adb.adb_click(adb.s_w / 2, 2110)
+        adb.adb_click(adb.s_w / 2, 2110)  # 意见反馈
         time.sleep(1)
         adb.adb_refresh()
         adb.click_by_text_after_refresh('请您填写不少于10个字的问题描述')
         time.sleep(1)
         adb.adb_input('hello world!')
         time.sleep(1)
-        adb.adb_click(adb.s_w / 2, 1225)
+        adb.adb_click(adb.s_w / 2, 1225)  # 提交
         time.sleep(1)
         adb.adb_put_back()
         time.sleep(1)
@@ -160,5 +160,6 @@ def unicom_shiyongbanzhu(num=10):
     adb.click_by_text_after_refresh('话费查询')
     time.sleep(2)
     adb.adb_put_back()
+
 
 unicom_shiyongbanzhu(0)
