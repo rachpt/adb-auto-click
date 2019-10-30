@@ -21,10 +21,6 @@ def taobao_18dianpu(num=18, th=0):
         time.sleep(1)
 
 
-# for _ in range(4):
-#     taobao_18dianpu(1,3)
-
-
 def unicom_qiandao():
     '''
     联通签到，包括3次转盘游戏
@@ -52,9 +48,6 @@ def unicom_qiandao():
     adb.adb_put_back()
     time.sleep(2)
     adb.adb_put_back()
-
-
-unicom_qiandao()
 
 
 def yundong_2_liuliang():
@@ -109,9 +102,6 @@ def yundong_2_liuliang():
     time.sleep(0.5)
 
 
-# yundong_2_liuliang()
-
-
 def jd_qiandao():
     adb.click_by_content_after_refresh('京东')
     time.sleep(5)
@@ -128,7 +118,24 @@ def jd_qiandao():
     adb.adb_put_back()
     time.sleep(0.5)
 
-# jd_qiandao()
 
-# adb.adb_keyboard(3)
-# adb.adb_refresh()
+def taobao():
+    '''
+    淘宝 领猫币
+    '''
+    taobao_18dianpu()
+    for i in range(4):
+        taobao_18dianpu(5,i+1)
+    adb.adb_click(873, 1930 - 180 * 6)
+
+## 淘宝 领猫币
+# taobao()
+
+## 联通签到
+# unicom_qiandao()
+
+## 联通运动领流量
+# yundong_2_liuliang()
+
+## 京东签到
+jd_qiandao()
